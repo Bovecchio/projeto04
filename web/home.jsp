@@ -5,13 +5,45 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <%@include file = "WEB-INF/jspf/menu.jspf"%>
+       
+        <title>HTML QUIZ: Home</title>
     </head>
-    <body>
-        <h1>Hello World!</h1>
+    <body class="body_color">
+         <br>
+        <center>
+            <h1 class="h1_body"> <a href="home.jsp" class="a_navbar a_link_navbar">HTML QUIZ</a></h1>             
+       
+        <!-- Sistema de login -->
+        <br><br>
+            <h2 class="h3_body">ATENÇÃO!</h2> <br>
+            <h3 class="h3_body">Para ser desafiado você precisa entrar com o seu nome de usuário.</h3> <br>
+            <p class="p3_body">Se você já fez participou do desafio antes, basta colocar o mesmo nome de usuário e clicar em Enviar.</p>
+            <p class="p3_body"> Se for sua primeira vez é só escolher um nome de usuário e clicar em Enviar!</p>
+        </center>
+        <br>
+        
+        <center>
+            <table>
+                <tr>
+                    <td>
+                        <form method="post" action="quiz.jsp">
+                            <div class="input-group mb-3">
+                            <input class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm" type="text" name="usuario" value="" required/>
+                            <div class="input-group-append">
+                                <input type="submit" class="btn btn-dark btn-lg btn-block fonte_botao" name="enviar" value="Enviar"/>
+                            </div>
+                            </div>
+                        </form>
+                    </td>
+                </tr>
+            </table>
+            <br><h3 class="h3_body">BOA SORTE!</h3> <br>
+        </center>
+        <%@include file = "WEB-INF/jspf/footer.jspf"%>
+       
     </body>
 </html>
