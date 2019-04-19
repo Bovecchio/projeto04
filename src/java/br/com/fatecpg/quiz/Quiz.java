@@ -23,7 +23,7 @@ public class Quiz {
     test.add(new Question("Permite definir uma regra CSS que deve ser aplicada a um tipo de mídia específico, tal como uma tela ou uma impressora.", "@media", new String[]{"body","head","@media","charset"}));
     test.add(new Question("Possui uma tag de abertura e outra tag de fechamento.", "elemento contêiner", new String[]{"elemento contêiner","Vetor Associativo","Desing repulsivo", "elemento autonômo"}));
     test.add(new Question("Elemento HTML utilizado para associar uma folha de estilos CSS ao documento HTML.", "link", new String[]{"body","href","input","link"}));
-    test.add(new Question("Elemento HTML utilizado para definir um campo de entrada de um formulário.", "2", new String[]{"entry","gateway","input","appetizer"}));
+    test.add(new Question("Elemento HTML utilizado para definir um campo de entrada de um formulário.", "input", new String[]{"entry","gateway","input","appetizer"}));
     return test;
     }
 }
