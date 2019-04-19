@@ -15,7 +15,7 @@
     <body class="body_color">
          <br>
         <center>
-            <h1 class="h1_body"> <a href="home.jsp" class="a_navbar a_link_navbar">HTML QUIZ</a></h1>             
+            <h1>HTML QUIZ</h1>             
        
         <!-- Sistema de login -->
         <br><br>
