@@ -1,13 +1,21 @@
 <%-- 
     Document   : math-test
     Created on : 15/04/2019, 15:45:17
-    Author     : finha
+    Author     : finha, J.Vasconcelos
 --%>
 
 <%@page import="br.com.fatecpg.quiz.Question"%>
 <%@page import="br.com.fatecpg.quiz.Quiz"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+
+<%
+    String usuario = (String) session.getAttribute("nome");
+    if (usuario == null) {
+        response.sendRedirect("home.jsp");
+    }
+%>
+
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -20,6 +28,7 @@
         <center>
         <h1>HTML QUIZ</h1>
         <h2>Teste de HTML</h2>
+        <h3><%=usuario%></h3>
         <form action="resultado.jsp">
         </center>
           
