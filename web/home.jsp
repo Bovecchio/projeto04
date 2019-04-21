@@ -15,7 +15,7 @@
 <%
     String usuario = (String) session.getAttribute("nome");
     if (usuario != null) {
-        response.sendRedirect("quiz.jsp");
+        //response.sendRedirect("quiz.jsp");
     }
 %>
 <html>
@@ -54,7 +54,7 @@
                         String nome = request.getParameter("nome");
                         if (nome != null && !nome.isEmpty()) {
                             session.setAttribute("nome", nome);
-                            response.sendRedirect("quiz.jsp");
+                            //response.sendRedirect("quiz.jsp");
                         }
                     %>
 
@@ -97,6 +97,7 @@
 
                         </tbody>
                     </table>
+                            <%Collections.reverse(BD.getUsuariosList());%>
                 </div>
                 <div class="col-sm">
                     <h2>Melhores Notas</h2>
@@ -109,7 +110,9 @@
                             </tr>
                         </thead>
                         <tbody> 
-                            <% id = 0;  %>
+                            <%id = 0;%>
+                            <%Collections.reverse(BD.getUsuariosList());%>
+                            
                             <%for (Usuario u : BD.getUsuariosList()) {%>
                             <tr>
                                 <% if (id > 8) {
@@ -119,12 +122,44 @@
                                 <th scope="row"> <%=id + 1%> </th>
                                 <td><%= u.getNome()%></td>
                                 <td><%= u.getMedia()%></td>
+
                             </tr>
+
                             <%}%>
+
                         </tbody>
                     </table>
                             <%Collections.reverse(BD.getUsuariosList());%>
                 </div>
+                <%if(usuario != null){%>
+                <div class="col-sm">
+                    <h2><%=usuario%> : Recentes</h2>
+                    <table class="table"  style="margin-bottom: 50px;">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">N°</th>
+                                <th scope="col">Nome</th>
+                                <th scope="col">Media</th>
+                            </tr>
+                        </thead>
+                        <tbody> 
+                            <% id = 0;  %>
+                            <%for (Usuario u : BD.getUsuarioList()) {%>
+                            <tr>
+                                <% if (id > 8) {
+                                        break;
+                                    } %>
+                                <%  id = BD.getUsuarioList().indexOf(u);%>
+                                <th scope="row"> <%=id + 1%> </th>
+                                <td><%= u.getNome()%></td>
+                                <td><%= u.getMedia()%></td>
+                            </tr>
+                            <%}%>
+                        </tbody>
+                    </table>
+                            <%Collections.reverse(BD.getUsuarioList());%>
+                </div>
+                <%}%>
 
             </div>
         </div>

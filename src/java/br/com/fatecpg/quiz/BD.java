@@ -9,6 +9,13 @@ import java.util.ArrayList;
 public class BD {
 
     private static ArrayList<Usuario> usuariosList;
+    private static ArrayList<Usuario> usuarioList;
+    
+    public static ArrayList<Usuario> getUsuarioList(){
+        
+        
+        return usuarioList;
+    }
     
     public static ArrayList<Usuario> getUsuariosList(){
         if(usuariosList == null){
