@@ -45,7 +45,7 @@
         user.setNome(usuario);
         user.setNota(corrects);
         BD.getUsuariosList().add(user);
-        //response.sendRedirect("resultado.jsp");
+        BD.getUsuarioList().add(user);
 
     } else if (request.getParameter("sair") != null) {
         session.invalidate();
@@ -61,7 +61,7 @@
         <div class="container">
         <h1>HTML QUIZ</h1>
         <h2>Resultado Final</h2>
-        <h2>Você acertou <u><%= user.getNota()%> %</u> das questões</h2>
+        <h2>Você acertou <u><%= grade%> %</u> das questões</h2>
         <h2>Nota <u><%= corrects%></u></h2>
         <h3><a class="btn btn-dark" href="quiz.jsp">Realizar novo QUIZ de HTML</a></h3>                 
         <h3><a class="btn btn-outline-danger" href="sair.jsp">Sair</a></h3>
