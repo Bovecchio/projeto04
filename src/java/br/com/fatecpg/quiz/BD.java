@@ -14,16 +14,16 @@ public class BD {
     private static ArrayList<Usuario> usuarioList;
 
     public static ArrayList<Usuario> ordenaUsuariosList() {
-        List<Usuario> obj = new ArrayList<Usuario>(usuariosList);
+        List<Usuario> ordenado = new ArrayList<Usuario>(usuariosList);
 
-        Collections.sort(obj, new Comparator<Usuario>() {
+        Collections.sort(ordenado, new Comparator<Usuario>() {
             @Override
             public int compare(Usuario object1, Usuario object2) {
                 return object1.getNota() > object2.getNota() ? 1 : -1;
             }
         });
-        Collections.reverse(obj);
-        return (ArrayList<Usuario>) obj;
+        Collections.reverse(ordenado);
+        return (ArrayList<Usuario>) ordenado;
     }
 
     public static ArrayList<Usuario> removeUsuarioList() {

@@ -36,10 +36,7 @@
 
         if (u.getNota() == 0) {
             grade = ((double) corrects / (double) Quiz.getQuiz().size()) * 100;
-            ct++;
-        } else {
-            ct++;
-            grade = (u.getNota() + (((double) corrects / (double) Quiz.getQuiz().size()) * 100)) / ct;
+
         }
 
         user.setNome(usuario);
@@ -59,39 +56,13 @@
     </head>
     <body>
         <div class="container">
-        <h1>HTML QUIZ</h1>
-        <h2>Resultado Final</h2>
-        <h2>Você acertou <u><%= grade%> %</u> das questões</h2>
-        <h2>Nota <u><%= corrects%></u></h2>
-        <h3><a class="btn btn-dark" href="quiz.jsp">Realizar novo QUIZ de HTML</a></h3>                 
-        <h3><a class="btn btn-outline-danger" href="sair.jsp">Sair</a></h3>
-        <table class="table"  style="margin-bottom: 50px;">
-            <thead class="thead-dark">
-                <tr>
-                    <th scope="col">N°</th>
-                    <th scope="col">Nome</th>
-                    <th scope="col">Media</th>
-
-                </tr>
-            </thead>
-            <tbody> 
-                <% int id = 0; %>
-                <%Collections.reverse(BD.getUsuariosList());%>
-                <%for (Usuario u : BD.getUsuariosList()) {%>
-                <tr>
-                    <% if (id > 8) {
-                            break;
-                        } %>
-                    <%  id = BD.getUsuariosList().indexOf(u);%>
-                    <th scope="row"> <%=id + 1%> </th>
-                    <td><%= u.getNome()%></td>
-                    <td><%= u.getNota()%></td>
-                </tr>
-                <%}%>
-            </tbody>
-        </table>
-            <%Collections.reverse(BD.getUsuariosList());%>
-            </div>
+            <h1>HTML QUIZ</h1>
+            <h2>Resultado Final</h2>
+            <h2>Você acertou <u><%= grade%> %</u> das questões</h2>
+            <h2>Nota <u><%= corrects%></u></h2>
+            <h3><a class="btn btn-dark" href="quiz.jsp">Realizar novo QUIZ de HTML</a></h3>                 
+            <h3><a class="btn btn-outline-danger" href="sair.jsp">Sair</a></h3>
+        </div>
     </body>
     <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
     <%@include file = "WEB-INF/jspf/footer.jspf"%>

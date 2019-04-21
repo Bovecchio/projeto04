@@ -23,14 +23,14 @@
 
         <title>HTML QUIZ: Home</title>
     </head>
-
+    <%@include file = "WEB-INF/jspf/csshome.jspf"%>
     <body class="body_color">
         <br>
     <center>
         <h1>HTML QUIZ</h1>             
 
         <!-- Sistema de login -->
-        <br><br>
+        <br>
         <%if (usuario == null) {%>
         <h2 class="h3_body">ATENÇÃO!</h2> <br>
         <h3 class="h3_body">Para ser desafiado você precisa entrar com o seu nome de usuário.</h3> <br>
@@ -73,93 +73,76 @@
             <div class="row">
                 <div class="col-sm">
                     <h2>Testes Recentes</h2>
-                    <table class="table"  style="margin-bottom: 50px;">
-                        <thead class="thead-dark">
-                            <tr>
-                                <th scope="col">N°</th>
-                                <th scope="col">Nome</th>
-                                <th scope="col">Nota</th>
-                            </tr>
-                        </thead>
-                        <tbody> 
-                            <% int id = 0;%>
-                            <%Collections.reverse(BD.getUsuariosList());%>
-                            <%for (Usuario u : BD.getUsuariosList()) {%>
-                            <tr>
-                                <% if (id > 8) {
-                                        break;
-                                    } %>
-                                <%  id = BD.getUsuariosList().indexOf(u);%>
-                                <th scope="row"> <%=id + 1%> </th>
-                                <td><%= u.getNome()%></td>
-                                <td><%= u.getNota()%></td>
-                            </tr>
 
-                            <%}%>
-
-                        </tbody>
+                    <table id="customers">
+                        <tr>
+                            <th>Nome</th>
+                            <th>Nota</th>
+                        </tr>
+                        <%int id = 0;  %>
+                        <%Collections.reverse(BD.getUsuariosList());%>
+                        <%for (Usuario u : BD.getUsuariosList()) {%>
+                        <tr>
+                            <% if (id > 8) {
+                                    break;
+                                } %>
+                            <%  id = BD.getUsuariosList().indexOf(u);%>
+                            <td><%= u.getNome()%></td>
+                            <td><%= u.getNota()%></td>
+                        </tr>
+                        <%}%>
                     </table>
+
                     <%Collections.reverse(BD.getUsuariosList());%>
                 </div>
                 <div class="col-sm">
 
 
                     <h2>Melhores Notas</h2>
-                    <table class="table"  style="margin-bottom: 50px;">
-                        <thead class="thead-dark">
-                            <tr>
-                                <th scope="col">N°</th>
-                                <th scope="col">Nome</th>
-                                <th scope="col">Nota</th>
-                            </tr>
-                        </thead>
-                        <tbody> 
-                            <%id = 0;%>
-                            
-                            <%for (Usuario u2 : BD.ordenaUsuariosList()) {%>
-                            <tr>
-                                <% if (id > 8) {
-                                        break;
-                                    } %>
-                                <%  id = BD.ordenaUsuariosList().indexOf(u2);%>
-                                <th scope="row"> <%=id + 1%> </th>
-                                <td><%= u2.getNome()%></td>
-                                <td><%= u2.getNota()%></td>
-
-                            </tr>
-
-                            <%}%>
-                            <%//Collections.reverse(BD.ordenaUsuariosList());%>
-                        </tbody>
+                    
+                    <table id="customers">
+                        <tr>
+                            <th>N°</th>
+                            <th>Nome</th>
+                            <th>Nota</th>
+                        </tr>
+                        <%id = 0;  %>
+                        <%for (Usuario u : BD.ordenaUsuariosList()) {%>
+                        <tr>
+                            <% if (id > 8) {
+                                    break;
+                                } %>
+                            <%  id = BD.ordenaUsuariosList().indexOf(u);%>
+                            <td><%=id + 1%></td>
+                            <td><%= u.getNome()%></td>
+                            <td><%= u.getNota()%></td>
+                        </tr>
+                        <%}%>
                     </table>
-                    <%//Collections.reverse(BD.getUsuariosList());%>
+                    
                 </div>
                 <%if (usuario != null) {%>
                 <%Collections.reverse(BD.getUsuarioList());%>
                 <div class="col-sm">
                     <h2><%=usuario%> : Recentes</h2>
-                    <table class="table"  style="margin-bottom: 50px;">
-                        <thead class="thead-dark">
-                            <tr>
-                                <th scope="col">N°</th>
-                                <th scope="col">Nome</th>
-                                <th scope="col">Media</th>
-                            </tr>
-                        </thead>
-                        <tbody> 
-                            <%id = 0;  %>
-                            <%for (Usuario u : BD.getUsuarioList()) {%>
-                            <tr>
-                                <% if (id > 8) {
-                                        break;
-                                    } %>
-                                <%  id = BD.getUsuarioList().indexOf(u);%>
-                                <th scope="row"> <%=id + 1%> </th>
-                                <td><%= u.getNome()%></td>
-                                <td><%= u.getNota()%></td>
-                            </tr>
-                            <%}%>
-                        </tbody>
+
+                    <table id="customers">
+                        <tr>
+                            <th>Nome</th>
+                            <th>Nota</th>
+                        </tr>
+                        <%id = 0;  %>
+                        <%for (Usuario u : BD.getUsuarioList()) {%>
+                        <tr>
+                            <% if (id > 8) {
+                                    break;
+                                } %>
+                            <%  id = BD.getUsuarioList().indexOf(u);%>
+                            
+                            <td><%= u.getNome()%></td>
+                            <td><%= u.getNota()%></td>
+                        </tr>
+                        <%}%>
                     </table>
                     <%Collections.reverse(BD.getUsuarioList());%>
                 </div>
@@ -169,7 +152,6 @@
         </div>
 
     </center>
-
 
 </body>
 <%@include file = "WEB-INF/jspf/footer.jspf"%>
