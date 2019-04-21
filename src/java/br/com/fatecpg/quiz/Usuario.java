@@ -7,7 +7,7 @@ package br.com.fatecpg.quiz;
 public class Usuario {
     
     private String nome;
-    private double media;
+    private double nota;
 
     public String getNome() {
         return nome;
@@ -17,11 +17,11 @@ public class Usuario {
         this.nome = nome;
     }
 
-    public double getMedia() {
-        return media;
+    public double getNota() {
+        return nota;
     }
 
-    public void setMedia(double media) {
-        this.media = media;
+    public void setNota(double nota) {
+        this.nota = nota;
     }
 }
