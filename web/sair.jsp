@@ -10,5 +10,6 @@
 <%
     session.invalidate();
     BD.removeUsuarioList();
+    BD.removeMedia();
     response.sendRedirect("home.jsp");
 %>

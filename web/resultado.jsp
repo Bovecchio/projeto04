@@ -4,6 +4,7 @@
     Author     : finha, J.Vasconcelos
 --%>
 
+<%@page import="java.text.DecimalFormat"%>
 <%@page import="java.util.Collections"%>
 <%@page import="br.com.fatecpg.quiz.BD"%>
 <%@page import="br.com.fatecpg.quiz.Usuario"%>
@@ -16,11 +17,19 @@
     if (usuario == null) {
         response.sendRedirect("home.jsp");
     }
-    double grade = 0;
-    int corrects = 0;
+    DecimalFormat df = new DecimalFormat("##.#");
     Usuario user = new Usuario();
 
-    
+    double grade = 0;
+    int corrects = 0;
+    double media = 0;
+    int ct = 0;
+
+    for (Usuario u : BD.acumulaMedia()) {
+        media = u.getMedia();
+        ct = u.getContador();
+    }
+
     if (request.getParameter("Quiz") != null) {
         for (Question q : Quiz.getQuiz()) {
             if (request.getParameter(q.getQuestion()) != null) {
@@ -32,7 +41,12 @@
 
         }
         grade = ((double) corrects / (double) Quiz.getQuiz().size()) * 100;
-        
+        ct++;
+        media = (media + corrects) / ct;
+
+        user.setMedia(media);
+        user.setContador(ct);
+        BD.acumulaMedia().add(user);
 
         user.setNome(usuario);
         user.setNota(corrects);
@@ -55,8 +69,8 @@
             <h2>Resultado Final</h2>
             <h2>Você acertou <u><%= grade%> %</u> das questões</h2>
             <h2>Nota <u><%= corrects%></u></h2>
-            
-           
+            <h2>Media <u><%= df.format(media)%></u></h2>
+
             <h3><a class="btn btn-dark" href="quiz.jsp">Realizar novo QUIZ de HTML</a></h3>                 
             <h3><a class="btn btn-outline-danger" href="sair.jsp">Sair</a></h3>
         </div>

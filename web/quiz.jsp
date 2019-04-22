@@ -42,7 +42,7 @@
                     <input type="radio" name="<%=q.getQuestion()%>" value="<%=alternative%>">
                     <span class="checkmark"></span>
                 </label>
-                    
+
                 <%}%>
                 <hr>
                 <%}%>

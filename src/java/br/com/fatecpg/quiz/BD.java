@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+
 /**
  *
  * @author Jefferson V.
@@ -12,6 +13,7 @@ public class BD {
 
     private static ArrayList<Usuario> usuariosList;
     private static ArrayList<Usuario> usuarioList;
+    private static ArrayList<Usuario> media;
 
     public static ArrayList<Usuario> ordenaUsuariosList() {
         List<Usuario> ordenado = new ArrayList<Usuario>(usuariosList);
@@ -24,6 +26,21 @@ public class BD {
         });
         Collections.reverse(ordenado);
         return (ArrayList<Usuario>) ordenado;
+    }
+
+    public static ArrayList<Usuario> acumulaMedia() {
+        if (media == null) {
+            media = new ArrayList<>();
+            Usuario obj = new Usuario();
+            obj.setMedia(0);
+            obj.setContador(0);
+        }
+        return media;
+    }
+
+    public static ArrayList<Usuario> removeMedia() {
+        BD.acumulaMedia().removeAll(media);
+        return media;
     }
 
     public static ArrayList<Usuario> removeUsuarioList() {

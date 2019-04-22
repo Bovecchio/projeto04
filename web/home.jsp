@@ -4,6 +4,7 @@
     Author     : finha, J.Vasconcelos
 --%>
 
+<%@page import="java.text.DecimalFormat"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.Comparator"%>
 <%@page import="java.util.Collections"%>
@@ -14,6 +15,8 @@
 <!DOCTYPE html>
 <%
     String usuario = (String) session.getAttribute("nome");
+    double media = 0;
+    DecimalFormat df = new DecimalFormat("##.#");
 %>
 <html>
     <head>
@@ -85,7 +88,7 @@
                                 } %>
                             <%  id = BD.getUsuariosList().indexOf(u);%>
                             <td><%= u.getNome()%></td>
-                            <td><%= u.getNota()%></td>
+                            <td><%= df.format(u.getNota())%></td>
                         </tr>
                         <%}%>
                     </table>
@@ -94,7 +97,7 @@
                 </div>
                 <div class="col-sm">
                     <h2>Melhores Notas</h2>
-                    
+
                     <table id="tabela">
                         <tr>
                             <th>N°</th>
@@ -110,17 +113,20 @@
                             <%  id = BD.ordenaUsuariosList().indexOf(u);%>
                             <td><%=id + 1%></td>
                             <td><%= u.getNome()%></td>
-                            <td><%= u.getNota()%></td>
+                            <td><%= df.format(u.getNota())%></td>
                         </tr>
                         <%}%>
                     </table>
-                    
+
                 </div>
                 <%if (usuario != null) {%>
                 <%Collections.reverse(BD.getUsuarioList());%>
+
+                <%for (Usuario u : BD.acumulaMedia()) {
+                        media = u.getMedia();
+                    }%>
                 <div class="col-sm">
                     <h2><%=usuario%> : Recentes</h2>
-
                     <table id="tabela">
                         <tr>
                             <th>Nome</th>
@@ -133,13 +139,19 @@
                                     break;
                                 } %>
                             <%  id = BD.getUsuarioList().indexOf(u);%>
-                            
+
                             <td><%= u.getNome()%></td>
-                            <td><%= u.getNota()%></td>
+                            <td><%= df.format(u.getNota())%></td>
                         </tr>
                         <%}%>
                     </table>
                     <%Collections.reverse(BD.getUsuarioList());%>
+                    <br>
+                    <%if (media == 0) {%>
+                    <h4>Sua Media : --</h4>
+                    <%} else {%>
+                    <h4>Sua Media : <%=df.format(media)%></h4>
+                    <%}%>
                 </div>
                 <%}%>
             </div>
