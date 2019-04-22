@@ -14,8 +14,6 @@
 <!DOCTYPE html>
 <%
     String usuario = (String) session.getAttribute("nome");
-    if (usuario != null) {
-    }
 %>
 <html>
     <head>
@@ -73,8 +71,7 @@
             <div class="row">
                 <div class="col-sm">
                     <h2>Testes Recentes</h2>
-
-                    <table id="customers">
+                    <table id="tabela">
                         <tr>
                             <th>Nome</th>
                             <th>Nota</th>
@@ -96,11 +93,9 @@
                     <%Collections.reverse(BD.getUsuariosList());%>
                 </div>
                 <div class="col-sm">
-
-
                     <h2>Melhores Notas</h2>
                     
-                    <table id="customers">
+                    <table id="tabela">
                         <tr>
                             <th>N°</th>
                             <th>Nome</th>
@@ -126,7 +121,7 @@
                 <div class="col-sm">
                     <h2><%=usuario%> : Recentes</h2>
 
-                    <table id="customers">
+                    <table id="tabela">
                         <tr>
                             <th>Nome</th>
                             <th>Nota</th>
