@@ -16,15 +16,11 @@
     if (usuario == null) {
         response.sendRedirect("home.jsp");
     }
-
     double grade = 0;
-    double media = 0;
-    double aux = 0;
     int corrects = 0;
-    
     Usuario user = new Usuario();
 
-    int ct = BD.getUsuarioList().size() + 1;
+    
     if (request.getParameter("Quiz") != null) {
         for (Question q : Quiz.getQuiz()) {
             if (request.getParameter(q.getQuestion()) != null) {
@@ -36,9 +32,7 @@
 
         }
         grade = ((double) corrects / (double) Quiz.getQuiz().size()) * 100;
-        ct = BD.getUsuarioList().size() + 1;
-        aux = media + corrects;
-        media = aux / ct;
+        
 
         user.setNome(usuario);
         user.setNota(corrects);
@@ -61,9 +55,8 @@
             <h2>Resultado Final</h2>
             <h2>Você acertou <u><%= grade%> %</u> das questões</h2>
             <h2>Nota <u><%= corrects%></u></h2>
-            <h2>Media <u><%= (double) media%></u></h2>
-            <h2>contador <u><%= ct%></u></h2>
-            <h2>aux <u><%= aux%></u></h2>
+            
+           
             <h3><a class="btn btn-dark" href="quiz.jsp">Realizar novo QUIZ de HTML</a></h3>                 
             <h3><a class="btn btn-outline-danger" href="sair.jsp">Sair</a></h3>
         </div>
